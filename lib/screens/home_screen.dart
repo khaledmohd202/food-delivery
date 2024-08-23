@@ -5,7 +5,9 @@ import 'package:food_ordering/widgets/custom_app_bar.dart';
 import 'package:food_ordering/widgets/custom_search_bar.dart';
 import 'package:food_ordering/widgets/header_of_list_view.dart';
 import 'package:food_ordering/widgets/popular_list_view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
   List<String> foods1 = ['Chicken Burger', 'Cheese Pizza'];
@@ -23,19 +25,19 @@ class HomeScreen extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
-              height: 50,
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.06,
             ),
             const CustomAppBar(),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.04,
             ),
             const CustomSearchBar(),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.03,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(14),
                 child: Image.asset(kBannerImage),
@@ -46,12 +48,15 @@ class HomeScreen extends StatelessWidget {
               color: kColor,
             ),
             CategoriesListView(foods: foods, bgColors: bgColors,),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.02,
+            ),
             const HeaderOfListView(
               type: 'Popular',
               color: kColor,
             ),
             PopularListView(foods: foods1),
-            const SizedBox(height: 50,),
+            // const SizedBox(height: 50,),
           ],
         ),
       ),
